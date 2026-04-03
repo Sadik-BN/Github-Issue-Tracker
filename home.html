@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-[#F8FAFC]">
 
 <head>
     <meta charset="UTF-8">
@@ -32,7 +32,8 @@
 </head>
 
 <body>
-    <header class="px-[80px] py-[16px] flex md:justify-between flex-col md:flex-row justify-center items-center gap-5">
+    <header
+        class="bg-white px-[80px] py-[16px] flex md:justify-between flex-col md:flex-row justify-center items-center gap-5">
         <div class="flex justify-center items-center gap-2">
             <img class="h-[36px] w-[36px]" src="./assets/github-logo.png" alt="">
             <h1 class="text-[24px] font-semibold">GitHub Issues Tracker</h1>
@@ -51,7 +52,15 @@
             <button class="btn btn-primary">Search</button>
         </div>
     </header>
+    <main class="container mx-auto mt-[60px]">
+        <div class="bg-white p-[24px] rounded-md flex flex-wrap items-center gap-2 justify-center md:justify-start">
+            <button class="btn btn-primary btn-outline w-[120px]">All</button>
+            <button class="btn btn-primary btn-outline w-[120px]">Open</button>
+            <button class="btn btn-primary btn-outline w-[120px]">Clossed</button>
+        </div>
 
+
+    </main>
 </body>
 
 </html>
