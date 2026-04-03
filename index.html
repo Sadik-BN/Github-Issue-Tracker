@@ -27,12 +27,34 @@
         }
     </style>
 
-    <title></title>
+    <title>Github Issues | Login</title>
     <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
 </head>
 
-    <body>
-        
-    </body>
+<body class="min-h-screen p-[32px] max-w-[520px] mx-auto rounded-md shadow-xl">
+
+    <div class="flex flex-col justify-center items-center">
+        <img src="./assets/github-logo.png" alt="">
+        <h3 class="text-[24px] font-semibold text-center mt-6">GitHub Issues Tracker</h3>
+        <p class="font-bold texxt-[16px] text-[#64748B] text-center">Sign in GitHub Issues Tracker to manage your issues
+        </p>
+    </div>
+
+    <div class="mt-6 flex justify-center items-center">
+        <fieldset class="fieldset rounded-box w-full p-4">
+            <label class="label text-[16px] font-medium">Username</label>
+            <input id="user-field" type="text" value="admin" class="input w-full rounded-lg" placeholder="Enter Username" />
+            <p class="text-[#4A00FF]">Default: admin</p>
+
+            <label class="label text-[16px] font-medium mt-[16px]">Password</label>
+            <input id="password-field" type="password" value="admin123" class="input w-full rounded-lg" placeholder="Enter Password" />
+            <p class="text-[#4A00FF]">Default: admin123</p>
+
+            <button id="login-btn" class="btn btn-primary mt-4 rounded-lg">Login</button>
+        </fieldset>
+    </div>
+
+    <script src="./scripts/login.js"></script>
+</body>
 
 </html>
