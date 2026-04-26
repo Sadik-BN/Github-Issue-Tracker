@@ -5,7 +5,7 @@ loginBtn.addEventListener("click",()=>{
     if(userField.value === "admin" && passField.value==="admin123")
     {
         alert("Login Successfull.");
-        window.location.replace("./home.html");
+        window.location.assign("./home.html");
     }
     else
     {

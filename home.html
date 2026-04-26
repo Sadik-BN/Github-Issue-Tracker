@@ -61,11 +61,12 @@
         </div>
 
         <div class="mt-4 bg-[#FBFBFB] rounded-md shadow-md">
-            <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:justify-between p-6 bg-white rounded-md shadow-md">
+            <div
+                class="flex flex-col md:flex-row justify-center items-center gap-6 md:justify-between p-6 bg-white rounded-md shadow-md">
                 <div class="flex gap-2 items-center">
                     <img class="bg-[#ECE4FF] rounded-full p-2" src="./assets/Aperture.png" alt="">
                     <div>
-                        <h1 class="font-semibold text-[20px]">69 Issues</h1>
+                        <h1 id="issue-count" class="font-semibold text-[20px]"></h1>
                         <p class="text-[#64748B]">Track and manage your project issues</p>
                     </div>
                 </div>
@@ -75,28 +76,38 @@
                 </div>
             </div>
 
-            <div class="p-6 grid grid-cols-1 md:grid-cols-4 gap-3 justify-items-center">
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
-                <div class="w-[100px] h-[100px] bg-black"></div>
+            <div id="card-container" class="p-6 grid grid-cols-1 md:grid-cols-4 gap-3 justify-items-center">
+
+
+            <!-- Card Template -->
+            <!-- <div class="shadow-md rounded-md border-t-2 border-[#00A96E] space-y-3 p-4">
+                    <div class="flex justify-between items-center">
+                        <img src="./assets/Open-Status.png" alt="">
+                        <p
+                            class="text-[#EF4444] text-[12px] font-medium bg-[#ef44441a] rounded-full px-6 py-1 text-center">
+                            HIGH</p>
+                    </div>
+                    <h3 class="text-[14px] font-semibold">Fix navigation menu on mobile devices</h3>
+                    <p class="text-[12px] text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
+                    <div class="flex gap-1">
+                        <p class="text-[#D97706] text-[12px] font-medium bg-[#D977061a] rounded-full px-6 py-1 text-center">BUG</p>
+                        <p class="text-[#D97706] text-[12px] font-medium bg-[#D977061a] rounded-full px-6 py-1 text-center">HELP WANTED</p>
+                    </div>
+                    <div class="border-t-[1px] border-gray-300 mt-[12px] pt-3">
+                        <p class="text-[#64748B] text-[12px]">#1 by john_doe</p>
+                        <p class="text-[#64748B] text-[12px]">1/15/2024</p>
+                    </div>
+                </div> -->
+
+
+            
+                
             </div>
         </div>
 
     </main>
+
+    <script src="./scripts/main.js"></script>
 </body>
 
 </html>
