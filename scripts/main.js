@@ -43,6 +43,15 @@ const loadClosed = async () => {
     showSpinner(false);
 };
 
+const loadSrc = async (text)=>{
+    showSpinner(true);
+    const serverData = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`).then(response => response.json());
+
+    displayIssues(serverData.data);
+
+    showSpinner(false);
+};
+
 const displayIssues = (Issues) => {
     const issuesContainer = document.getElementById("card-container");
     issuesContainer.innerHTML = "";
@@ -87,7 +96,7 @@ loadIssues();
 const allBtn = document.getElementById("all");
 const openBtn = document.getElementById("open");
 const closedBtn = document.getElementById("closed");
-
+const srcBtn = document.getElementById("src-btn");
 
 
 allBtn.addEventListener("click",()=>{
@@ -116,3 +125,11 @@ closedBtn.addEventListener("click",()=>{
     loadClosed();
 });
 
+srcBtn.addEventListener("click",()=>{
+    let btns = document.getElementsByClassName("btn");
+    for (let btn of btns) {
+        btn.classList.add("btn-outline");
+    }
+    const srcText = document.getElementById("src-box").value;
+    loadSrc(srcText);
+});
