@@ -91,12 +91,28 @@ const closedBtn = document.getElementById("closed");
 
 
 allBtn.addEventListener("click",()=>{
+
+    let btns = document.getElementsByClassName("btn");
+    for (let btn of btns) {
+        btn.classList.add("btn-outline");
+    }
+    allBtn.classList.remove("btn-outline");
     loadIssues();
 });
 openBtn.addEventListener("click",()=>{
+    let btns = document.getElementsByClassName("btn");
+    for (let btn of btns) {
+        btn.classList.add("btn-outline");
+    }
+    openBtn.classList.remove("btn-outline");
     loadOpen();
 });
 closedBtn.addEventListener("click",()=>{
+    let btns = document.getElementsByClassName("btn");
+    for (let btn of btns) {
+        btn.classList.add("btn-outline");
+    }
+    closedBtn.classList.remove("btn-outline");
     loadClosed();
 });
 
