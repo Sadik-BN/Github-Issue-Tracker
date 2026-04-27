@@ -19,4 +19,4 @@ function add(a, b) { return a + b; }<br>
 const add = (a, b) => a + b;
 
 ## 5️⃣ What are template literals?
-Ans: Strings that are inside backticks (` `) instead (" "). We can put variables directly inside the string using ${}.
+Ans: Strings that are inside backticks (\` \`) instead (" "). We can put variables directly inside the string using ${}.
