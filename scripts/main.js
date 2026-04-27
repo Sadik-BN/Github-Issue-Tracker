@@ -26,7 +26,7 @@ const loadOpen = async () => {
     showSpinner(true);
     const serverData = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues").then(response => response.json());
 
-    const opendata = serverData.data.filter(issue=>issue.status === "open");
+    const opendata = serverData.data.filter(issue => issue.status === "open");
 
     displayIssues(opendata);
 
@@ -43,7 +43,7 @@ const loadClosed = async () => {
     showSpinner(false);
 };
 
-const loadSrc = async (text)=>{
+const loadSrc = async (text) => {
     showSpinner(true);
     const serverData = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`).then(response => response.json());
 
@@ -53,36 +53,37 @@ const loadSrc = async (text)=>{
 };
 
 
-const displayModal=(Issue)=>{
+const displayModal = (Issue) => {
 
     const modalBody = document.getElementById("modal-body");
-    modalBody.innerHTML="";
+    modalBody.innerHTML = "";
 
     const newDiv = document.createElement("div");
 
-    newDiv.innerHTML=`
+    const labelsHTML = Issue.labels.map(label =>
+        `
+            <p class="text-[#D97706] text-[12px] font-medium bg-[#D977061a] rounded-full px-6 py-1 text-center"> ${label} </p>
+        `
+    ).join("");
+
+    newDiv.innerHTML = `
                         <div class="space-y-6">
-                    <h3 class="text-[24px] font-bold">Fix broken image uploads</h3>
+                    <h3 class="text-[24px] font-bold">${Issue.title}</h3>
                     <p class="text-[#64748B] text-[12px]"> <span
-                            class="font-medium text-[12px] text-white bg-[#00A96E] rounded-full px-3 py-1">Opened</span>
-                        • Opened by Fahim Ahmed • 22/02/2026</p>
+                            class="font-medium text-[12px] text-white bg-[${Issue.status === "open" ? "#00A96E" : "#A855F7"}] rounded-full px-3 py-1">${Issue.status.toUpperCase()}</span>
+                        • Opened by ${Issue.author} • ${Issue.createdAt}</p>
                     <div class="flex gap-1">
-                        <p
-                            class="text-[#D97706] text-[12px] font-medium bg-[#D977061a] rounded-full px-6 py-1 text-center">
-                            BUG</p>
-                        <p
-                            class="text-[#D97706] text-[12px] font-medium bg-[#D977061a] rounded-full px-6 py-1 text-center">
-                            HELP WANTED</p>
+                        ${labelsHTML}
                     </div>
-                    <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+                    <p class="text-[#64748B]"> ${Issue.description} </p>
                     <div class="grid grid-cols-2 items-center bg-[#F8FAFC] rounded-lg shadow-md p-4">
                         <div>
                             <p class="text-[#64748B]">Assignee:</p>
-                            <p class="font-semibold">Fahim Ahmed</p>
+                            <p class="font-semibold">${Issue.assignee === "" ? "N/A" : Issue.assignee}</p>
                         </div>
                         <div>
                             <p class="text-[#64748B]">Priority</p>
-                            <p class="font-medium text-[12px] text-white bg-[#EF4444] rounded-full px-3 py-1 w-[60px] text-center">HIGH</p>
+                            <p class="font-medium text-[12px] text-white bg-[${Issue.priority === "high" ? "#EF4444" : Issue.priority === "medium" ? "#F59E0B" : "#9CA3AF"}] rounded-full px-3 py-1 w-[70px] text-center">${Issue.priority.toUpperCase()}</p>
 
                         </div>
                     </div>
@@ -92,13 +93,13 @@ const displayModal=(Issue)=>{
     modal.showModal();
 }
 
-const loadDetails = async(id)=>{
+const loadDetails = async (id) => {
 
     showSpinner(true);
     const serverData = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`).then(response => response.json());
 
     displayModal(serverData.data);
-    
+
     showSpinner(false);
 }
 
@@ -111,7 +112,7 @@ const displayIssues = (Issues) => {
     Issues.forEach(Issue => {
         let newDiv = document.createElement("div");
 
-        const labelsHTML = Issue.labels.map(label => 
+        const labelsHTML = Issue.labels.map(label =>
             `
                 <p class="text-[#D97706] text-[12px] font-medium bg-[#D977061a] rounded-full px-6 py-1 text-center"> ${label} </p>
             `
@@ -151,7 +152,7 @@ const closedBtn = document.getElementById("closed");
 const srcBtn = document.getElementById("src-btn");
 
 
-allBtn.addEventListener("click",()=>{
+allBtn.addEventListener("click", () => {
 
     let btns = document.getElementsByClassName("btn");
     for (let btn of btns) {
@@ -160,7 +161,7 @@ allBtn.addEventListener("click",()=>{
     allBtn.classList.remove("btn-outline");
     loadIssues();
 });
-openBtn.addEventListener("click",()=>{
+openBtn.addEventListener("click", () => {
     let btns = document.getElementsByClassName("btn");
     for (let btn of btns) {
         btn.classList.add("btn-outline");
@@ -168,7 +169,7 @@ openBtn.addEventListener("click",()=>{
     openBtn.classList.remove("btn-outline");
     loadOpen();
 });
-closedBtn.addEventListener("click",()=>{
+closedBtn.addEventListener("click", () => {
     let btns = document.getElementsByClassName("btn");
     for (let btn of btns) {
         btn.classList.add("btn-outline");
@@ -177,7 +178,7 @@ closedBtn.addEventListener("click",()=>{
     loadClosed();
 });
 
-srcBtn.addEventListener("click",()=>{
+srcBtn.addEventListener("click", () => {
     let btns = document.getElementsByClassName("btn");
     for (let btn of btns) {
         btn.classList.add("btn-outline");
