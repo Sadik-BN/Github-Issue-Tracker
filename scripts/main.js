@@ -52,6 +52,58 @@ const loadSrc = async (text)=>{
     showSpinner(false);
 };
 
+
+const displayModal=(Issue)=>{
+
+    const modalBody = document.getElementById("modal-body");
+    modalBody.innerHTML="";
+
+    const newDiv = document.createElement("div");
+
+    newDiv.innerHTML=`
+                        <div class="space-y-6">
+                    <h3 class="text-[24px] font-bold">Fix broken image uploads</h3>
+                    <p class="text-[#64748B] text-[12px]"> <span
+                            class="font-medium text-[12px] text-white bg-[#00A96E] rounded-full px-3 py-1">Opened</span>
+                        • Opened by Fahim Ahmed • 22/02/2026</p>
+                    <div class="flex gap-1">
+                        <p
+                            class="text-[#D97706] text-[12px] font-medium bg-[#D977061a] rounded-full px-6 py-1 text-center">
+                            BUG</p>
+                        <p
+                            class="text-[#D97706] text-[12px] font-medium bg-[#D977061a] rounded-full px-6 py-1 text-center">
+                            HELP WANTED</p>
+                    </div>
+                    <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+                    <div class="grid grid-cols-2 items-center bg-[#F8FAFC] rounded-lg shadow-md p-4">
+                        <div>
+                            <p class="text-[#64748B]">Assignee:</p>
+                            <p class="font-semibold">Fahim Ahmed</p>
+                        </div>
+                        <div>
+                            <p class="text-[#64748B]">Priority</p>
+                            <p class="font-medium text-[12px] text-white bg-[#EF4444] rounded-full px-3 py-1 w-[60px] text-center">HIGH</p>
+
+                        </div>
+                    </div>
+                </div>
+    `
+    modalBody.appendChild(newDiv);
+    modal.showModal();
+}
+
+const loadDetails = async(id)=>{
+
+    showSpinner(true);
+    const serverData = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`).then(response => response.json());
+
+    displayModal(serverData.data);
+    
+    showSpinner(false);
+}
+
+
+
 const displayIssues = (Issues) => {
     const issuesContainer = document.getElementById("card-container");
     issuesContainer.innerHTML = "";
@@ -66,7 +118,7 @@ const displayIssues = (Issues) => {
         ).join("");
 
         newDiv.innerHTML = `
-                <div class="shadow-md rounded-md border-t-2 ${Issue.status === "open" ? "border-[#00A96E]" : "border-[#A855F7]"} space-y-3 p-4">
+                <div onclick="loadDetails(${Issue.id})" class="shadow-md rounded-md border-t-2 ${Issue.status === "open" ? "border-[#00A96E]" : "border-[#A855F7]"} space-y-3 p-4">
                     <div class="flex justify-between items-center">
                         <img src="${Issue.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed-Status.png"}" alt="">
                         <p
@@ -130,6 +182,7 @@ srcBtn.addEventListener("click",()=>{
     for (let btn of btns) {
         btn.classList.add("btn-outline");
     }
+    srcBtn.classList.remove("btn-outline");
     const srcText = document.getElementById("src-box").value;
     loadSrc(srcText);
 });
