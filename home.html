@@ -55,9 +55,9 @@
     <main class="container mx-auto mt-[60px]">
         <div
             class="bg-white p-[24px] rounded-md flex flex-wrap items-center gap-2 justify-center md:justify-start shadow-md">
-            <button class="btn btn-primary btn-outline w-[120px]">All</button>
-            <button class="btn btn-primary btn-outline w-[120px]">Open</button>
-            <button class="btn btn-primary btn-outline w-[120px]">Clossed</button>
+            <button id="all" class="btn btn-primary btn-outline w-[120px]">All</button>
+            <button id="open" class="btn btn-primary btn-outline w-[120px]">Open</button>
+            <button id="closed" class="btn btn-primary btn-outline w-[120px]">Clossed</button>
         </div>
 
         <div class="mt-4 bg-[#FBFBFB] rounded-md shadow-md">
@@ -75,12 +75,14 @@
                     <p><i class="fa-solid fa-circle" style="color: rgb(100, 10, 172);"></i> Clossed</p>
                 </div>
             </div>
-
+            <section id="spinner" class="flex justify-center items-center my-20" hidden="true">
+                <span class="loading loading-infinity loading-xl"></span>
+            </section>
             <div id="card-container" class="p-6 grid grid-cols-1 md:grid-cols-4 gap-3 justify-items-center">
 
 
-            <!-- Card Template -->
-            <!-- <div class="shadow-md rounded-md border-t-2 border-[#00A96E] space-y-3 p-4">
+                <!-- Card Template -->
+                <!-- <div class="shadow-md rounded-md border-t-2 border-[#00A96E] space-y-3 p-4">
                     <div class="flex justify-between items-center">
                         <img src="./assets/Open-Status.png" alt="">
                         <p
@@ -100,8 +102,8 @@
                 </div> -->
 
 
-            
-                
+
+
             </div>
         </div>
 
